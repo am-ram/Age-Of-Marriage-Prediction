@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+			<meta charset="UTF-8">
+			<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css' )}}">
+			<!--<link rel="stylesheet" href="style.css">-->
+			<script src="https://kit.fontawesome.com/5f3f547070.js" crossorigin="anonymous"></script>
+		</head>
+    <body>
+		<section>
+    	<h1 style="padding-top: 15px;font-size: 50px;">Do you think ML can predict your age of marriage?</h1>
+        <span class="contact100-form-title" id="output" style="color: #ff0000;" >&nbsp;</span>
+		
+		<form action="{{url_for('predict')}}" method="GET" style="padding-left: 2%;">
+        	<div class="wrap-input100 " style="padding-left: 2%;" >        
+				<input class="input100" type="text" id="yob" name="yob" placeholder="Year of Birth (YYYY) ex: 1980">
+				<span class="focus-input100"></span>
+			</div>
+
+			<div class="wrap-input100 "style="padding-left: 2%" >
+				<select  class="input100" id="gender" name="gender" style="padding: 10px 5px;margin-top: 15px;border: 2px solid #d9d9d9;text-align: center;border-style: solid;border-color: black;"" >
+					<option value="">Select Gender</option>
+					<option value="0">Female</option>
+					<option value="1">Male</option>
+				</select>
+				<span class="focus-input100"></span>
+			</div>
+
+			<div class="wrap-input100" style="border-bottom: 0px;padding-left: 2%" >
+				<select  class="input100" id="religion" name="religion" style="padding: 10px 5px;margin-top: 15px;border: 2px solid #d9d9d9;text-align: center;border-style: solid;border-color: black;"" >
+					<option value="">Select Religion</option>
+					<option value="0">Christian</option>
+					<option value="1">Hindu</option>
+					<option value="2">Jain</option>
+					<option value="3">Muslim</option>
+					<option value="4">Sikh</option>
+				</select>
+				<span class="focus-input100"></span>
+			</div>
+			<div class="wrap-input100" style="border-bottom: 0px;padding-left: 2%" >
+				<select class="input100"  id="caste" name="caste" style="padding: 10px 5px;margin-top: 15px;border: 2px solid #d9d9d9;text-align: center;border-style: solid;border-color: black;"" >
+					<option value="">Select Caste</option>
+					<option value="0">Agarwal</option>
+					<option value="1">Agri</option>
+					<option value="2">Ahom</option>
+					<option value="3">Arora</option>
+					<option value="4">Arya Vysya</option>
+					<option value="5">Baidya</option>
+					<option value="6">Baishnab</option>
+					<option value="7">Baishya</option>
+					<option value="8">Balija</option>
+					<option value="9">Baniya</option>
+					<option value="10">Bhandari</option>
+					<option value="11">Bhatia</option>
+					<option value="12">Billava</option>
+					<option value="14">Brahmin</option>
+					<option value="14">Chowdhary</option>
+					<option value="15">Goud</option>
+					<option value="16">Gursikh</option>
+					<option value="17">Kaibarta</option>
+					<option value="18">Kalita</option>
+					<option value="19">Kamma</option>
+					<option value="19">Kapu</option>
+					<option value="19">Kayastha</option>
+					<option value="20">Khatri</option>
+					<option value="21">Kshatriya</option>
+					<option value="22">Lingayath</option>
+					<option value="23">Marthoma</option>
+					<option value="24">Memon</option>
+					<option value="24">Naidu</option>
+					<option value="25">OBC - Barber/Naayee</option>
+					<option value="26">Panchal</option>
+					<option value="27">Patel</option>
+					<option value="28">Reddy</option>
+					<option value="30">Roman Catholic</option>
+					<option value="29">Ramdasia</option>
+					<option value="30">Roman Catholic</option>
+					<option value="31">Sahu</option>
+					<option value="32">Saini</option>
+					<option value="33">Scheduled Caste (SC)</option>
+					<option value="34">Shwetamber</option>
+					<option value="35">Sindhi-Sakkhar</option>
+					<option value="36">Thakur</option>
+					<option value="37">Vaishnav</option>
+					<option value="38">Valmiki</option>
+					<option value="39">Vanniyar</option>
+					<option value="40">Viswabrahmin</option>
+					<option value="8">Yadava / Golla</option>
+					<option value="42">Others Castes</option>
+				</select>
+				<span class="focus-input100"></span>
+			</div>
+			<div class="wrap-input100" style="padding-left: 2%" >
+				<select class="input100"  id="mother_tongue" name="mother_tongue" style="padding: 10px 5px;margin-top: 15px;border: 2px solid #d9d9d9;text-align: center;border-style: solid;border-color: black;"" >
+					<option value="">Select Mother Tongue</option>
+					<option value="0">Aka</option>
+					<option value="1">Assamese</option>
+					<option value="2">Bengali</option>
+					<option value="3">Bhojpuri</option>
+					<option value="4">Chattisgarhi</option>
+					<option value="5">English</option>
+					<option value="6">Gujarati</option>
+					<option value="7">Haryanavi</option>
+					<option value="8">Hindi</option>
+					<option value="9">Kannada</option>
+					<option value="10">Kashmiri</option>
+					<option value="11">Konkani</option>
+					<option value="12">Kutchi</option>
+					<option value="13">Malayalam</option>
+					<option value="14">Manipuri</option>
+					<option value="15">Marathi</option>
+					<option value="16">Marwari</option>
+					<option value="17">Nepali</option>
+					<option value="18">Odia</option>
+					<option value="19">Other</option>
+					<option value="20">Punjabi</option>
+					<option value="21">Rajasthani</option>
+					<option value="22">Sindhi</option>
+					<option value="23">Tamil</option>
+					<option value="24">Telugu</option>
+					<option value="25">Tulu</option>
+					<option value="26">Urdu</option>
+				</select>
+				<span class="focus-input100"></span>
+			</div>
+			<div class="wrap-input100" style="border-bottom: 0px; padding-left: 2%;" >
+				<select class="input100"  id="country" name="country" style="padding: 10px 5px;margin-top: 15px;border: 2px solid #d9d9d9;text-align: center;border-style: solid;border-color: black;" >
+					<option value="">Select Country</option>
+					<option value="0">Australia</option>
+					<option value="1">Bahrain</option>
+					<option value="2">Bangladesh</option>
+					<option value="3">Canada</option>
+					<option value="4">Germany</option>
+					<option value="5">India</option>
+					<option value="6">Ireland</option>
+					<option value="7">Kuwait</option>
+					<option value="8">Malaysia</option>
+					<option value="9">Myanmar</option>
+					<option value="10">Netherlands</option>
+					<option value="11">New Zealand</option>
+					<option value="12">Norway</option>
+					<option value="13">Oman</option>
+					<option value="14">Pakistan</option>
+					<option value="15">Philippines</option>
+					<option value="16">Qatar</option>
+					<option value="17">Singapore</option>
+					<option value="18">South Africa</option>
+					<option value="19">USA</option>
+					<option value="20">United Arab Emirates</option>
+					<option value="21">United Kingdom</option>
+				</select>
+				<span class="focus-input100"></span>
+			</div>
+                  
+			<div class="container-contact100-form-btn" style="padding-left: 5%;">
+				<div class="wrap-contact100-form-btn">
+					<div class="contact100-form-bgbtn"></div>
+					<button class="contact100-form-btn" id='submit' type="submit" value="Submit" >Predict</button>
+				</div>
+			</div>
+        </form>
+		<br>
+		
+		 
+		<div id='pred' style="font-size: xx-large; padding-left: 5%;">
+			Your age of marriage could be <strong>{{predicted_age_of_marriage}} </strong>years.
+		</div> 
+		
+	
+		
+		<h2 id="h2" style="padding-left: 7%; padding-bottom: -2%;">Check out my Socials
+			<div id="about">
+				Author : Sai Ram.K<br> Last Updated on: 15 December 2020
+			</div>
+			<div id="about1">
+				P.S. :- Try entering details of people who are already married.
+			</div>
+		</h2>
+		<div id="socials" style="margin: -0.5%; padding-bottom: 25%;  padding-left: 0%; padding-right: -10%; right: 100%;">
+			<footer>
+				<a href="https://www.linkedin.com/in/am-ram/" target="_blank">
+					<div class="wrapper">
+						<div class="button">
+							<div class="icon"><i class="fab fa-linkedin"></i></div>
+							<span>LinkedIn</span>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://github.com/am-ram" target="_blank">
+					<div class="wrapper">
+						<div class="button">
+							<div class="icon" ><i class="fab fa-github" ></i></div>
+							<span>GitHub</span>
+						</div>
+					</div>
+				</a>
+				
+			</footer>
+		</div>
+		
+	</section>
+	</body>
+
+</html>
