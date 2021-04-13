@@ -1,4 +1,4 @@
-# fun-age
+# Age Of Marriage Predictor
 This is as a Machine Learning application that predicts the average age of a person's marriage based on various factors like:-<br>
 1. Year Of birth<br>
 2. Religion<br>
