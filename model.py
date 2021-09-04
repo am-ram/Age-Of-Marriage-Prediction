@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
 import pickle
-df = pd.read_csv(r'D:\Deployed Projects\age_of_marriage_data.txt')
+df = pd.read_csv(r'age_of_marriage_data.txt')
 df.drop('height',axis=1)
 print(df.isnull().sum())
 df.dropna(inplace=True)
